@@ -27,7 +27,7 @@
 
     <ImageView
         android:id="@+id/imageTest1"
-        android:layout_width="361dp"
+        android:layout_width="360dp"
         android:layout_height="300dp"
         android:src="@drawable/test"
         android:visibility="invisible"
@@ -39,10 +39,12 @@
         android:id="@+id/FirstSeekBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:layout_gravity="center"
+        android:layout_marginTop="60dp"
         android:max="100"
+
         android:progress="100"
-        />
+        android:thumbTint="#0B68E2"
+        android:progressTint="#8B8EE6"/>
 
 </LinearLayout>
