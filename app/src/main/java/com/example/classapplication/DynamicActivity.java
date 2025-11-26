@@ -52,6 +52,7 @@ public class DynamicActivity extends AppCompatActivity {
         }
         scrollView.addView(linearLayoutTemp);
         linearLayout.addView(scrollView);
+        //fix
 
     }
 }
