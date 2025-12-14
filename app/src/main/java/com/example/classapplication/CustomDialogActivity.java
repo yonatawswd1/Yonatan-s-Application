@@ -1,5 +1,6 @@
 package com.example.classapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,10 +19,11 @@ public class CustomDialogActivity extends AppCompatActivity {
     Dialog d;
     SharedPreferences sp;
     EditText etUserName, etPassword;
-    Button btnCustomLogin, btnLogin;
+    Button btnCustomLogin, btnLogin, btnShow;
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,13 @@ public class CustomDialogActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        btnShow = findViewById(R.id.btnShowSP);
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CustomDialogActivity.this, sp.getString("Fname", "") + " " + sp.getString("Lname", ""), Toast.LENGTH_SHORT).show();
+            }
         });
 
         btnLogin = findViewById(R.id.btnLogin);
