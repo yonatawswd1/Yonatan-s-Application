@@ -2,10 +2,15 @@ package com.example.classapplication;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView tvContext;
     Switch imgSwitch;
     ImageView imageTest;
 
@@ -38,12 +44,16 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
 
-
     }
-    public void initViews(){
+
+    public void initViews() {
         SeekBarTest = findViewById(R.id.FirstSeekBar);
 
         imageTest = findViewById(R.id.imageTest1);
+
+        tvContext = findViewById(R.id.tv_menu);
+
+        registerForContextMenu(tvContext);
 
         imgSwitch = (Switch) findViewById(R.id.SwitchImageVIS);
         imgSwitch.setOnClickListener(new View.OnClickListener() {
@@ -51,15 +61,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Boolean switchState = imgSwitch.isChecked();
 
-                if(!switchState){
+                if (!switchState) {
                     imageTest.setVisibility(View.INVISIBLE);
-                }
-                else{
+                } else {
                     imageTest.setVisibility(View.VISIBLE);
                 }
             }
         });
-
 
         SeekBarTest.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -82,12 +90,55 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Press ended", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        }
 
 
+    public boolean onOptionsItemSelected (MenuItem item){
+
+        super.onOptionsItemSelected(item);
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_login) {
+            Toast.makeText(this, "You've logged in successfully", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_register) {
+            Toast.makeText(this, "You've registered successfully", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_toast) {
+            Toast.makeText(this, "You have 10 minutes :)", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
     }
 
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+            super.onCreateContextMenu(menu, v, menuInfo);
 
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_main, menu);
+        }
+
+    public boolean onConetextMenuSelected (MenuItem item){
+
+        if (item.getItemId() ==  R.id.firstline) {
+            Toast.makeText(this, "You selected first line", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() ==  R.id.secondtline) {
+            Toast.makeText(this, "You selected second line", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
+    }
 }
+
+
+
+
+
 
 
 

@@ -47,4 +47,15 @@
         android:thumbTint="#0B68E2"
         android:progressTint="#8B8EE6"/>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_menu"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Click me for 2 seconds to open the menu"/>
+
+
 </LinearLayout>
