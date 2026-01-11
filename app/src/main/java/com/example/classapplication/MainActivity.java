@@ -1,6 +1,7 @@
 package com.example.classapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -98,18 +99,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-    public boolean onOptionsItemSelected (MenuItem item){
-
-        super.onOptionsItemSelected(item);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_login) {
-            Toast.makeText(this, "You've logged in successfully", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_register) {
-            Toast.makeText(this, "You've registered successfully", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_toast) {
-            Toast.makeText(this, "You have 10 minutes :)", Toast.LENGTH_SHORT).show();
+        if(id == R.id.contextA) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.dynamicA) {
+            startActivity(new Intent(this, DynamicActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.mainA) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.backA){
+            finish();
+            return true;
         }
 
         return true;

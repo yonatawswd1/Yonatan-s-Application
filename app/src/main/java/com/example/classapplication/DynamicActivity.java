@@ -1,6 +1,9 @@
 package com.example.classapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -31,6 +34,8 @@ public class DynamicActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
         linearLayout = findViewById(R.id.main);
         linearLayoutTemp = new LinearLayout(this);
         scrollView = new HorizontalScrollView(this);
@@ -54,5 +59,40 @@ public class DynamicActivity extends AppCompatActivity {
         linearLayout.addView(scrollView);
         //fix
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.contextA) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.dynamicA) {
+            startActivity(new Intent(this, DynamicActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.mainA) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.backA){
+            finish();
+            return true;
+        }
+
+        return true;
     }
 }

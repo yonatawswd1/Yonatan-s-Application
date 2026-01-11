@@ -1,7 +1,9 @@
 package com.example.classapplication;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,4 +56,32 @@ public class SharedPreferencesActivity extends AppCompatActivity {
             tvName.setText(tvName.getText().toString() + " " + strFname + " " + strLname);
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.contextA) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.dynamicA) {
+            startActivity(new Intent(this, DynamicActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.mainA) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+
+        else if( id == R.id.backA){
+            finish();
+            return true;
+        }
+
+        return true;
+    }
+
 }
