@@ -11,14 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassApplication">
+
+        <!-- 1. Place the intent-filter INSIDE ListViewActivity -->
         <activity
-            android:name=".IntentFilterActivity"
+            android:name=".ListViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".IntentFilterActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".AgeActivity"
@@ -28,41 +34,36 @@
             android:exported="false" />
         <activity
             android:name=".FirstActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".AlertDialogActivity"
-            android:exported="true">
-
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.example.ACTION_OPEN_SCREEN_B" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
-
         <activity
             android:name=".CustomDialogActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.example.ACTION_OPEN_SCREEN_B" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SharedPreferencesActivity"
-            android:exported="true" >
-
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.example.ACTION_OPEN_SCREEN_A" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".DynamicActivity"
             android:exported="false" />
+
+        <!-- 2. Make sure MainActivity is set to exported="false" since it's no longer the launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
